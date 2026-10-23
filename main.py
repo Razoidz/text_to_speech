@@ -1,7 +1,8 @@
 import os
+import platform
 from gtts import gTTS
 
-text = "Settings for the bot test"
+text = "Settings for the bot test2"
 
 try:
     tts = gTTS(text=text, lang="en")
@@ -14,3 +15,25 @@ try:
 
 except Exception as e:
     print(f"An error occurred: {e}")
+
+
+
+def play_audio(filename="voice.mp3"):
+    system = platform.system()
+    print(f"Playing {filename}...")
+    
+    try:
+        if system == "Linux":
+            # Tries mpg123 first, falls back to mpv or ffplay if available
+            os.system(f"mpg123 {filename} 2>/dev/null || mpv {filename} 2>/dev/null || ffplay -nodisp -autoexit {filename} 2>/dev/null")
+        elif system == "Darwin":  # macOS
+            os.system(f"afplay {filename}")
+        elif system == "Windows":
+            os.system(f"start {filename}")
+        else:
+            print(f"Unsupported operating system: {system}")
+    except Exception as e:
+        print(f"An error occurred while playing audio: {e}")
+
+if __name__ == "__main__":
+    play_audio()
