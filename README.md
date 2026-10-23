@@ -31,7 +31,7 @@ Usage
 Run the script from your terminal or command prompt:
 
    ```Bash
-      python your_script_name.py
+      python main.py
    ```
 Upon successful execution, you will see the following output in your console, and a voice.mp3 file will be created in your project directory:
 
@@ -46,9 +46,4 @@ If you want the script to automatically play the audio file immediately after ge
       # Ubuntu / Debian
       sudo apt update && sudo apt install mpg123
       ```
-Then, uncomment the following line in the Python script:
-Python
 
-      ```
-      os.system("mpg123 voice.mp3")
-      ```
