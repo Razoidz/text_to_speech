@@ -1,8 +1,17 @@
 import os
+import sys
 import platform
 from gtts import gTTS
 
-text = "Settings for the bot test2"
+# Get text from CLI arguments, or prompt if none were given
+if len(sys.argv) > 1:
+    text = " ".join(sys.argv[1:])
+else:
+    text = input("Enter the text to convert to speech: ").strip()
+
+if not text:
+    print("No text provided. Exiting.")
+    sys.exit(1)
 
 try:
     tts = gTTS(text=text, lang="en")
